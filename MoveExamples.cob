@@ -4,7 +4,7 @@ AUTHOR. Job Sarneel.
 
 DATA DIVISION.
 WORKING-STORAGE SECTION.
-*>01 Surname        PIC X(8)    VALUE "Sarneel".
+
 01 Salesprice     PIC 9(4)V99 VALUE ZEROS.
 01 NumOfEmployees PIC 999     VALUE ZEROS.
 01 Salary         PIC 9999V99 VALUE ZEROS.
@@ -12,8 +12,10 @@ WORKING-STORAGE SECTION.
 *> And one variable to hold Continue or Quit options.
 01 cq             PIC X       VALUE ZERO.
 *> Perhaps we need litterals for the c and the q?? Seems to work.
-01 c              PIC X       VALUE "c".
-01 q              PIC X       VALUE "q".
+*> Not required though. Using the literals directly in de if-statement 
+*> works just as fine.
+*>01 c              PIC X       VALUE "c".
+*>01 q              PIC X       VALUE "q".
 
 *> And a group (record):
 01 StudentRec.
@@ -34,10 +36,10 @@ PROCEDURE DIVISION.
   DISPLAY "Variable 'Surname' has value: " Surname.
   DISPLAY "Press 'c' to continue or 'q' to quit: " WITH NO ADVANCING
   ACCEPT cq
-  IF cq = c THEN
+  IF cq = "c" THEN
     DISPLAY ""
    ELSE
-    IF cq = q THEN
+    IF cq = "q" THEN
       STOP RUN
      ELSE
       DISPLAY "That's not a 'q' or a 'c'. Congratulations, you broke the program."
