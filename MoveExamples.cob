@@ -9,6 +9,11 @@ WORKING-STORAGE SECTION.
 01 NumOfEmployees PIC 999     VALUE ZEROS.
 01 Salary         PIC 9999V99 VALUE ZEROS.
 01 CountyName     PIC X(9)    VALUE ALL "@".
+*> And one variable to hold Continue or Quit options.
+01 cq             PIC X       VALUE ZERO.
+*> Perhaps we need litterals for the c and the q?? Seems to work.
+01 c              PIC X       VALUE "c".
+01 q              PIC X       VALUE "q".
 
 *> And a group (record):
 01 StudentRec.
@@ -27,6 +32,17 @@ WORKING-STORAGE SECTION.
 PROCEDURE DIVISION.
 
   DISPLAY "Variable 'Surname' has value: " Surname.
+  DISPLAY "Press 'c' to continue or 'q' to quit: " WITH NO ADVANCING
+  ACCEPT cq
+  IF cq = c THEN
+    DISPLAY ""
+   ELSE
+    IF cq = q THEN
+      STOP RUN
+     ELSE
+      DISPLAY "That's not a 'q' or a 'c'. Congratulations, you broke the program."
+      STOP RUN
+  END-IF
   DISPLAY "Now lets use a MOVE statement...".
   MOVE "Smith" TO Surname.
   DISPLAY "'Surname' value has changed to: " Surname.
