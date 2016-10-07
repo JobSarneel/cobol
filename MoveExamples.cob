@@ -17,7 +17,7 @@ WORKING-STORAGE SECTION.
 *>01 c              PIC X       VALUE "c".
 *>01 q              PIC X       VALUE "q".
 
-*> And a group (record):
+*> And a group item (record):
 01 StudentRec.
   02 StudentId    PIC 9(7).
   02 StudentName.
