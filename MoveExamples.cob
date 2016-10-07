@@ -16,6 +16,10 @@ WORKING-STORAGE SECTION.
 *> works just as fine.
 *>01 c              PIC X       VALUE "c".
 *>01 q              PIC X       VALUE "q".
+*> We found an even nicer solution: put the continue or quit routine in
+*> a separate paragraph, use evaluate instead of nested if's and let the
+*> paragraph recursively call itself when something other than a 'c' or 'q'
+*> is entered. You can call this little subroutine as often as you want!
 
 *> And a group item (record):
 01 StudentRec.
@@ -32,36 +36,38 @@ WORKING-STORAGE SECTION.
 
 
 PROCEDURE DIVISION.
-
+Begin.
   DISPLAY "Variable 'Surname' has value: " Surname.
-  DISPLAY "Press 'c' to continue or 'q' to quit: " WITH NO ADVANCING
-  ACCEPT cq
-  IF cq = "c" THEN
-    DISPLAY ""
-   ELSE
-    IF cq = "q" THEN
-      STOP RUN
-     ELSE
-      DISPLAY "That's not a 'q' or a 'c'. Congratulations, you broke the program."
-      STOP RUN
-  END-IF
+  PERFORM ContinueOrQuit
+  
   DISPLAY "Now lets use a MOVE statement...".
   MOVE "Smith" TO Surname.
   DISPLAY "'Surname' value has changed to: " Surname.
+  PERFORM ContinueOrQuit
+
   DISPLAY "Sweet. Long values get truncated, if we try to move 'Fitzwilliam' for intance...".
   MOVE "Fitzwilliam" TO Surname.
   DISPLAY "'Surname' value has changed to: " Surname.
+  PERFORM ContinueOrQuit
+
   DISPLAY "Great. Now let's try some numeric values. We got a variable 'Salesprice' for that."
   DISPLAY "Variable 'Salesprice' has value: " Salesprice.
+  PERFORM ContinueOrQuit
+
   DISPLAY "Let's alter the value to 25.5".
   MOVE 25.5 TO Salesprice.
   DISPLAY "'Salesprice' value has changed to: " Salesprice.
+  PERFORM ContinueOrQuit
+  
+  DISPLAY "That works. Let's try a couple more."
   MOVE 7.553 TO Salesprice.
   DISPLAY "'Salesprice' value has changed to: " Salesprice.
   MOVE 93425.158 TO Salesprice.
   DISPLAY "'Salesprice' value has changed to: " Salesprice.
   MOVE 128 TO Salesprice.
   DISPLAY "'Salesprice' value has changed to: " Salesprice.
+  PERFORM ContinueOrQuit
+
   DISPLAY "'CountyName' is: " CountyName.
 
   MOVE "1205621William Fitzpatrick 19751021LM051385" TO StudentRec.
@@ -84,10 +90,18 @@ PROCEDURE DIVISION.
   DISPLAY "'StudentRec' is: " StudentRec.
   DISPLAY "'Forename' is: " Forename.
   DISPLAY "Date of birth is: " DOB "/" MOB "/" YOB.
-  DISPLAY "Studen name is: " Surname "," SPACE Forename.
-
-
-
-
-  
+  DISPLAY "Studen name is: " Surname "," SPACE Forename.  
   STOP RUN. 
+
+ContinueOrQuit.
+  DISPLAY "Press 'c' to continue or 'q' to quit: " WITH NO ADVANCING
+  ACCEPT cq
+  EVALUATE cq
+    WHEN "c" DISPLAY ""
+    WHEN "q" 
+      DISPLAY "OK, let's stop the program."
+      STOP RUN
+    WHEN OTHER
+      DISPLAY "That's not a 'c' or a 'q'. Try again."
+      PERFORM ContinueOrQuit
+  END-EVALUATE.
