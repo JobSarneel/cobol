@@ -11,18 +11,19 @@ DATA DIVISION.
 FILE SECTION.
 FD BookFile.
 01 BookDetails.
-   88  EndOfBookFile   VALUE HIGH-VALUES.
+   88  EndOfBookFile                    VALUE HIGH-VALUES.
    02  BSN                   PIC X(17). 
    02  BookAuthor.
        03 AuthSurname        PIC X(15).       
        03 AuthForename       PIC X(10).
        03 AuthMiddleInitials PIC X(6).
    02  BookTitle             PIC X(25).       
-   02  BookPublisher         PIC X(35).
-   02  BookEdition           PIC X(2).
-   02  BookYearOfAppearance  PIC X(4).
+   02  BookPublisher         PIC X(35). 
+   02  BookEdition           PIC X(2).  
+   02  BookYearOfAppearance  PIC X(4).  
+
 WORKING-STORAGE SECTION.
-01 cv             PIC X       VALUE ZERO.
+01 cv                        PIC X      VALUE ZERO.
 
 PROCEDURE DIVISION.
 Begin.
@@ -45,7 +46,7 @@ Begin.
    STOP RUN.
    
 GetBookData.
-   DISPLAY "Enter BSN:                      " WITH NO ADVANCING
+   DISPLAY "Enter ISBN:                     " WITH NO ADVANCING
    ACCEPT BSN	
    DISPLAY "Enter author's last name:       " WITH NO ADVANCING
    ACCEPT AuthSurname
