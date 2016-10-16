@@ -5,7 +5,7 @@ ENVIRONMENT DIVISION.
 INPUT-OUTPUT SECTION.
 FILE-CONTROL.
    SELECT EmployeeFile ASSIGN TO "Employee.dat"
-          ORGANIZATION IS SEQUENTIAL.
+          ORGANIZATION IS LINE SEQUENTIAL.
 
 DATA DIVISION.
 FILE SECTION.
@@ -13,13 +13,17 @@ FD EmployeeFile.
 01 EmployeeDetails.
    88  EndOfEmployeeFile   VALUE HIGH-VALUES.
    02  EmpSSN              PIC 9(9). 
+   02  FILLER              PIC X        VALUE SPACES.
    02  EmpName.
        03 EmpSurname       PIC X(15).
+       03 FILLER           PIC X        VALUE SPACES.
        03 EmpForename      PIC X(10).
+       03 FILLER           PIC X        VALUE SPACES.
    02  EmpDateOfBirth.
        03 EmpYOB           PIC 9(4).
        03 EmpMOB           PIC 99.
        03 EmpDOB           PIC 99.
+       03 FILLER           PIC X        VALUE SPACES.
    02  EmpGender           PIC X.
 
 PROCEDURE DIVISION.
