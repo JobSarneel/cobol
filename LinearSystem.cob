@@ -21,11 +21,11 @@ AUTHOR. Job Sarneel.
 DATA DIVISION.
 WORKING-STORAGE SECTION.
 01 matrix.
-  02 equation 						OCCURS 3 TIMES.
+  02 equation 			       			OCCURS 3 TIMES.
     03 element		PIC S99V99		OCCURS 4 TIMES.
 
 01 tempMatrix.
-  02 tempEquation 					OCCURS 3 TIMES.
+  02 tempEquation 				      	OCCURS 3 TIMES.
     03 tempElement	PIC S99V99		OCCURS 4 TIMES.
 
 01 equationIndex	PIC 9			VALUE 1.
@@ -105,6 +105,10 @@ Begin.
 
   DISPLAY "This should be your matrix with zeros under your second leading 1:"
   PERFORM ZerosUnder
+
+  DISPLAY "Congrats. You seem to have your matrix in RREF!"
+  DISPLAY "The result suggests the solution to this system of equations is a line..."
+  DISPLAY "Although I'm not absolutely positive, it seems the "
 
 
   STOP RUN.
