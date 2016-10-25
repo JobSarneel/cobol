@@ -11,7 +11,7 @@ WORKING-STORAGE SECTION.
 
 01 phrase      				PIC X(50) 	VALUE "De kat krabt de krullen van de trap.".
 01 phraseIndex 				PIC 99		VALUE 1.
-01 count-of-trailing-spaces PIC 99.
+01 count-of-trailing-spaces	PIC 99.
 01 phraseLength				PIC 99.
 
 
