@@ -29,8 +29,8 @@ WORKING-STORAGE SECTION.
   02 tempEquation 				      	OCCURS 3 TIMES.
     03 tempElement	 PIC S99V99		OCCURS 4 TIMES.
 =======
-  02 equation        						OCCURS 3 TIMES.
-    03 element		PIC S99V99		OCCURS 4 TIMES.
+  02 equation        						  OCCURS 3 TIMES.
+    03 element		PIC S99V99		  OCCURS 4 TIMES.
 
 01 tempMatrix.
   02 tempEquation 	      				OCCURS 3 TIMES.
