@@ -21,12 +21,21 @@ AUTHOR. Job Sarneel.
 DATA DIVISION.
 WORKING-STORAGE SECTION.
 01 matrix.
+<<<<<<< HEAD
   02 equationCursor 			       	OCCURS 3 TIMES.
     03 element		   PIC S99V99		OCCURS 4 TIMES.
 
 01 tempMatrix.
   02 tempEquation 				      	OCCURS 3 TIMES.
     03 tempElement	 PIC S99V99		OCCURS 4 TIMES.
+=======
+  02 equation        						OCCURS 3 TIMES.
+    03 element		PIC S99V99		OCCURS 4 TIMES.
+
+01 tempMatrix.
+  02 tempEquation 	      				OCCURS 3 TIMES.
+    03 tempElement	PIC S99V99		OCCURS 4 TIMES.
+>>>>>>> efbfc8d1879cfe77f3ba5d104a0fbc0545bff8d7
 
 01 equationIndex	   PIC 9			  VALUE 1.
 01 elementIndex		   PIC 9			  VALUE 1.
