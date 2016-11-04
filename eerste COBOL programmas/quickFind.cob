@@ -53,7 +53,7 @@
            STOP RUN.
 
        PandQConnected.
-           DISPLAY "Here you can check wheter two nodes are in the"
+           DISPLAY "Here you can check whether two nodes are in the"
                    " same group. Enter a p: "
                    WITH NO ADVANCING
            ACCEPT p
@@ -100,6 +100,8 @@
                        "will now make the required updates in the "
                        "array."
 
+               *> Taking these into memory means we don't  have to
+               *> look 'm up all the  time.
                MOVE v(p) to vp
                MOVE v(q) to vq
 
